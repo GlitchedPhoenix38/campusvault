@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:campusvault/screens/university_selection_screen.dart';
+import 'package:campusvault/utils/route_transitions.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -151,27 +152,8 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                       child: FilledButton(
                         onPressed: () {
                           Navigator.of(context).push(
-                            PageRouteBuilder(
-                              pageBuilder: (context, animation, secondaryAnimation) =>
-                                  const UniversitySelectionScreen(),
-                              transitionsBuilder:
-                                  (context, animation, secondaryAnimation, child) {
-                                const begin = Offset(1.0, 0.0);
-                                const end = Offset.zero;
-                                const curve = Curves.easeInOutCubic;
-
-                                var tween = Tween(begin: begin, end: end)
-                                    .chain(CurveTween(curve: curve));
-
-                                return SlideTransition(
-                                  position: animation.drive(tween),
-                                  child: FadeTransition(
-                                    opacity: animation,
-                                    child: child,
-                                  ),
-                                );
-                              },
-                              transitionDuration: const Duration(milliseconds: 500),
+                            slideRoute(
+                              const UniversitySelectionScreen(),
                             ),
                           );
                         },
