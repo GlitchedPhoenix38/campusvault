@@ -181,6 +181,23 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                         ),
                       ],
                     ),
+                    const SizedBox(height: 12),
+                    // Maker credit footer
+                    GestureDetector(
+                      onLongPress: () {
+                        Navigator.of(context).pushNamed('/admin');
+                      },
+                      child: Text(
+                        'Made by GlitchedPhoenix38',
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w400,
+                          color: theme.textTheme.bodyMedium?.color
+                              ?.withValues(alpha: 0.4),
+                          letterSpacing: 0.2,
+                        ),
+                      ),
+                    ),
                     const SizedBox(height: 16),
                   ],
                 ),
